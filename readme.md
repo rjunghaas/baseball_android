@@ -1,0 +1,1 @@
+This is an Android version of the baseball apps that I have previously built.  It requires that you set up MySQL and run init_db.py (see baseball_py) repo.  Then runserver for the baseball_py Django web server.  

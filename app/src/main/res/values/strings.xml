@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">baseball_android</string>
+
+    <string name="Title">Calculate a Player\'s VORP</string>
+    <string name="Subtitle">(Value Over Replacement Player)</string>
+    <string name="Instructions">Instructions</string>
+    <string name="Step1">1. Search for a player until name appears below.</string>
+    <string name="Search">Player\'s Name</string>
+    <string name="SearchResults">Player\'s Name</string>
+    <string name="Step2">2. Enter dates in MM/DD/YYYY Format.</string>
+    <string name="StartDate">Start Date</string>
+    <string name="StartDateField">MM/DD/YYYY</string>
+    <string name="EndDate">End Date</string>
+    <string name="EndDateField">MM/DD/YYYY</string>
+    <string name="submitButton">Submit</string>
+    <string name="vorpResult">VORP for Player from MM/DD/YYYY to MM/DD/YYYY.</string>
+    <string name="action_settings">Settings</string>
+</resources>
