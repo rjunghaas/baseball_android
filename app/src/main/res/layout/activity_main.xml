@@ -1,0 +1,164 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:id="@+id/uilayout"
+    android:background="#ff74ffa0">
+
+    <TextView android:text="@string/Title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:id="@+id/title"
+        android:textSize="18dp" />
+
+    <TextView android:text="@string/Subtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dip"
+        android:id="@+id/Subtitle"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Instructions"
+        android:id="@+id/Instructions"
+        android:layout_below="@+id/Subtitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dip"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Step1"
+        android:id="@+id/Step1"
+        android:layout_below="@+id/Instructions"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip"
+        android:textSize="12dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Search"
+        android:id="@+id/Search"
+        android:layout_below="@+id/Step1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip"
+        android:textSize="12dp"
+        android:background="#ffffffff"
+        android:editable="true"
+        android:clickable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SearchResults"
+        android:id="@+id/SearchResults"
+        android:layout_below="@+id/Search"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Step2"
+        android:id="@+id/Step2"
+        android:layout_below="@+id/SearchResults"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dip"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/StartDate"
+        android:id="@+id/StartDate"
+        android:layout_below="@+id/Step2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip"
+        android:textSize="12dp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/StartDateField"
+        android:id="@+id/StartDateField"
+        android:layout_below="@+id/StartDate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="12dp"
+        android:editable="true"
+        android:layout_marginTop="10dip"
+        android:clickable="true"
+        android:textStyle="italic"
+        android:background="#ffffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EndDate"
+        android:id="@+id/EndDate"
+        android:layout_below="@+id/StartDateField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip"
+        android:textSize="12dp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EndDateField"
+        android:id="@+id/EndDateField"
+        android:layout_below="@+id/EndDate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="12dp"
+        android:editable="true"
+        android:layout_marginTop="10dip"
+        android:clickable="true"
+        android:textStyle="italic"
+        android:background="#ffffffff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submitButton"
+        android:id="@+id/submitButton"
+        android:layout_below="@+id/EndDateField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip"
+        android:enabled="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:textSize="12dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vorpResult"
+        android:id="@+id/vorpResult"
+        android:layout_below="@+id/submitButton"
+        android:layout_marginTop="20dip"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
