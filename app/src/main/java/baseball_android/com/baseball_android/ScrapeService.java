@@ -15,12 +15,13 @@ public class ScrapeService extends Service {
 
     }
 
+    // Get parameters for VORP calculation, construct URL, and initialize new Thread
     public int onStartCommand(Intent intent, int flags, int startId) {
         String playerName = intent.getStringExtra("name");
         String startDate = intent.getStringExtra("start date");
         String endDate = intent.getStringExtra("end date");
 
-        // 'http://127.0.0.1:8000/players/scrape?player=Yoenis+Cespedes&start_date=1%2F1%2F2014&end_date=12%2F20%2F2014'
+        // Attempt to URL encode scrapeURL with parameters and send to scrapeAPI
         try {
             String urlEncodedPlayerName = URLEncoder.encode(playerName, "UTF-8");
             String urlEncodedStartDate = URLEncoder.encode(startDate, "UTF-8");

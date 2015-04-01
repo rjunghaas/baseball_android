@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     public class searchMessage extends BroadcastReceiver {
-        // Create Broadcast Receiver to get messages back from Services
+        // Create Broadcast Receiver to get messages back from SearchService
         @Override
         public void onReceive(Context context, Intent intent) {
             // Get Intent action
@@ -34,9 +34,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public class scrapeMessage extends BroadcastReceiver {
+        // Create Broadcast Receiver to get messages back from ScrapeService
+        @Override
         public void onReceive(Context context, Intent intent) {
+            // Get Intent action
             String action = intent.getAction();
 
+            // if Action is SCRAPE_SERVICE, get "vorp" and set up TextView for results.
             if(action.equalsIgnoreCase(ScrapeService.SCRAPE_SERVICE)) {
                 TextView playerName = (TextView) findViewById(R.id.SearchResults);
                 String name = playerName.getText().toString();
@@ -54,7 +58,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
-    // Initialize Broadcast Receiver
+    // Initialize Broadcast Receivers
     private searchMessage searchReceiver = new MainActivity.searchMessage();
     private scrapeMessage scrapeReceiver = new MainActivity.scrapeMessage();
 
@@ -74,11 +78,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         Button submit = (Button)findViewById(R.id.submitButton);
         submit.setOnClickListener(this);
 
+        // Register Receiver for scrape results on Submit button click
         registerReceiver(scrapeReceiver, new IntentFilter(ScrapeService.SCRAPE_SERVICE));
     }
 
     protected void onDestroy() {
         unregisterReceiver(searchReceiver);
+        unregisterReceiver((scrapeReceiver));
         super.onDestroy();
     }
 
@@ -128,9 +134,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     // Use onClick for Submit button to calculate VORP and display results
     @Override
     public void onClick (View arg0) {
-        //TextView vorpResult = (TextView)findViewById(R.id.vorpResult);
-        //vorpResult.setText("Submit Button Clicked.");
-
+        // Get variables for player's name, start date, and end date and send these through Intent to ScrapeService
         TextView playerName = (TextView) findViewById(R.id.SearchResults);
         String name = playerName.getText().toString();
 

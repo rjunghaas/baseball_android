@@ -16,20 +16,24 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ScrapeRequest extends AsyncTask<String, Integer, JSONObject> {
+    // Declares context so that it is accessible within AsyncTask
     private Context context;
 
     public ScrapeRequest (Context context) {
         this.context = context;
     }
 
+    // Capture API URL, set up API call, and parse JSON results.  JSON sent to onPostExecute.
     @Override
     protected JSONObject doInBackground (String... params) {
         InputStream input = null;
 
         try{
             JSONObject obj = new JSONObject();
+            // Create URL object with API URL for scrape
             URL url = new URL(params[0]);
 
+            // Initialize connection with settings and connect
             HttpURLConnection scrapeConnection = (HttpURLConnection) url.openConnection();
             scrapeConnection.setReadTimeout(10000);
             scrapeConnection.setConnectTimeout(20000);
@@ -37,6 +41,7 @@ public class ScrapeRequest extends AsyncTask<String, Integer, JSONObject> {
             scrapeConnection.setDoInput(true);
             scrapeConnection.connect();
 
+            // Pull data from API and parse it into StringBuilder
             input = scrapeConnection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             StringBuilder sb = new StringBuilder();
@@ -59,6 +64,7 @@ public class ScrapeRequest extends AsyncTask<String, Integer, JSONObject> {
                 }
             }
 
+            // Set resulting vorp value into obj and return it
             JSONObject res = new JSONObject(sb.toString());
             obj.put("vorp", res.get("vorp"));
             return obj;
@@ -77,11 +83,14 @@ public class ScrapeRequest extends AsyncTask<String, Integer, JSONObject> {
         return null;
     }
 
+    // Once results are received from API, parse it, and attach to Broadcast Receiver to send back to MainActivity
     @Override
     protected void onPostExecute(JSONObject obj) {
+        // Create new Intent and set action to be received by MainActivity
         Intent scrapeResultIntent = new Intent();
         scrapeResultIntent.setAction(ScrapeService.SCRAPE_SERVICE);
 
+        // Attempt to load result of API call into Intent
         try {
             String vorp = obj.getString("vorp");
             scrapeResultIntent.putExtra("vorp", vorp);
@@ -93,6 +102,7 @@ public class ScrapeRequest extends AsyncTask<String, Integer, JSONObject> {
             scrapeResultIntent.putExtra("SearchResult", "??");
         }
 
+        // Send Intent to Broadcast Receiver in MainActivity
         context.sendBroadcast(scrapeResultIntent);
     }
 }
